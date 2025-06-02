@@ -1,0 +1,113 @@
+@font-face {
+    font-family: 'CentraNo2-Light';
+    src: url('fonts/CentraNo2-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CentraNo2-Medium';
+    src: url('fonts/CentraNo2-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+body, html {
+    height: 100%;
+    line-height: 1.8;
+    margin: 0;
+    font-family: 'CentraNo2-Light', Arial, sans-serif;
+}
+
+.parallax-container {
+    position: relative;
+    min-height: 100vh; /* Reduced from 250vh to match viewport height */
+    overflow: hidden;
+}
+
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: opacity 1s ease-in-out;
+}
+
+#parallax-bg1 {
+    background-image: url('images/stars.gif');
+    z-index: -2;
+}
+
+#parallax-bg2 {
+    background-image: url('images/image2.jpg');
+    z-index: -1;
+    opacity: 0;
+}
+
+.content {
+    position: relative;
+    min-height: 100vh; /* Reduced from 250vh to match viewport height */
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 5vh 10%; /* Added top and bottom padding */
+}
+
+.text-box {
+    background-color: rgba(0, 0, 0, 0.492);
+    padding: 40px;
+    border-radius: 0;
+    width: 60%;
+    max-height: 100vh; /* Set maximum height relative to viewport */
+    overflow-y: auto; /* Make scrollable if content doesn't fit */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    position: absolute;
+    text-align: center;
+    left: 50%; /* Position from center of page */
+    transform: translateX(-50%); /* Center the box horizontally */
+}
+
+.text-box.right {
+    padding-right: 50px;  /* Increased right padding */
+    left: 50%; /* Center from the middle of the page */
+    right: auto; /* Remove right positioning */
+    transform: translateX(-50%); /* Center the box horizontally */
+}
+
+.right {
+    right: 0%;
+}
+
+.right-1 {
+    top: 0vh;
+}
+
+h1 {
+    color: #ffffff;
+    font-family: 'CentraNo2-Medium', Arial, sans-serif;
+    font-weight: 500;
+    line-height: 1.8;
+    text-align: center;
+    margin-top: 200px; /* Center the h1 headings */
+    margin-bottom: 200px; /* Center the h1 headings */
+}
+
+
+p {
+    font-family: 'CentraNo2-Light', Arial, sans-serif;
+    font-weight: 300;
+    color: #ffffff;
+    line-height: 1.8;
+    text-align: center;
+    margin-bottom: 200px; /* Reduced from 200px */
+}
+
+.text-box::-webkit-scrollbar {
+    width: 8px;
+}
+
