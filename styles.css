@@ -16,20 +16,23 @@
     font-display: swap; 
 }
 
-body, html {
+html, body {
     height: 100%;
+    width: 100%;
     margin: 0;
+    padding: 0;
     font-family: 'CentraNo2-Light', Arial, sans-serif;
     background-color: #000;
+    overflow-x: hidden;
 }
 
 .parallax-container {
-    height: 100vh;
+    height: 100vh; /* 100% of viewport height */
+    height: -webkit-fill-available; /* For iOS Safari */
     overflow-y: auto;
     overflow-x: hidden;
-    position: relative;
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-
+    position: relative;
 }
 
 .background {
@@ -65,7 +68,7 @@ body, html {
 /* To keep text constrained within a readable width */
 .text-block h2,
 .text-block p {
-    max-width: 600px;
+    max-width: 570px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -85,10 +88,52 @@ p {
     line-height: 1.8;
 }
 
-/* Media query for mobile devices */
+/* Mobile devices */
 @media screen and (max-width: 768px) {
     .text-block {
         padding: 30px 15px;
         margin: 80px 0;
+        min-height: 50vh; /* Ensures even small blocks take up good space */
+    }
+    
+    /* First and last blocks should have enough padding to ensure full height */
+    .text-block:first-child {
+        margin-top: 20vh;
+    }
+    
+    .text-block:last-child {
+        margin-bottom: 20vh;
+    }
+}
+
+/* Tablet devices */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    .text-block {
+        margin: 100px 0; /* Slightly larger spacing than phones */
+        padding: 35px 30px;
+    }
+    
+    /* Adjust font sizes specifically for tablets */
+    h2 {
+        font-size: clamp(30px, 4.5vw, 42px);
+    }
+    
+    p {
+        font-size: clamp(18px, 2.5vw, 22px);
+    }
+}
+
+/* Landscape orientation adjustments */
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    .text-block {
+        margin: 60px 0; /* Reduced margins for landscape orientation */
+    }
+    
+    .text-block:first-child {
+        margin-top: 10vh;
+    }
+    
+    .text-block:last-child {
+        margin-bottom: 10vh;
     }
 }
