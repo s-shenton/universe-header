@@ -1,0 +1,70 @@
+@font-face {
+    font-family: 'CentraNo2-Medium';
+    src: url('path/to/CentraNo2-Medium.woff2') format('woff2'),
+         url('path/to/CentraNo2-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CentraNo2-Light';
+    src: url('path/to/CentraNo2-Light.woff2') format('woff2'),
+         url('path/to/CentraNo2-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'CentraNo2-Light', Arial, sans-serif;
+}
+
+.parallax-container {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    perspective: 1px;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateZ(0);
+    background-image: url('images/stars.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.content {
+    position: relative;
+    transform: translateZ(1px) scale(0.5);
+    transform-origin: center top;
+}
+
+.text-block {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    margin: 100px auto;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #333;
+    font-family: 'CentraNo2-Medium', Arial, sans-serif;
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #666;
+    font-family: 'CentraNo2-Light', Arial, sans-serif;
+    font-size: 24px;
+    line-height: 1.5;
+}
