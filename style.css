@@ -59,10 +59,10 @@ body, html {
 }
 
 .text-box {
-    background-color: rgba(0, 0, 0, 0.492);
-    padding: 40px;
+    
+    padding: 0px;
     border-radius: 0;
-    width: 60%;
+    width: 70%;
     max-height: 100vh; /* Set maximum height relative to viewport */
     overflow-y: auto; /* Make scrollable if content doesn't fit */
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -72,25 +72,13 @@ body, html {
     transform: translateX(-50%); /* Center the box horizontally */
 }
 
-.text-box.right {
-    padding-right: 50px;  /* Increased right padding */
-    left: 50%; /* Center from the middle of the page */
-    right: auto; /* Remove right positioning */
-    transform: translateX(-50%); /* Center the box horizontally */
-}
 
-.right {
-    right: 0%;
-}
-
-.right-1 {
-    top: 0vh;
-}
 
 h1 {
     color: #ffffff;
     font-family: 'CentraNo2-Medium', Arial, sans-serif;
     font-weight: 500;
+    font-size: 48px;
     line-height: 1.8;
     text-align: center;
     margin-top: 200px; /* Center the h1 headings */
@@ -101,6 +89,7 @@ h1 {
 p {
     font-family: 'CentraNo2-Light', Arial, sans-serif;
     font-weight: 300;
+    font-size: 24px;
     color: #ffffff;
     line-height: 1.8;
     text-align: center;
