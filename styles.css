@@ -1,0 +1,94 @@
+@font-face {
+    font-family: 'CentraNo2-Medium';
+    src: url('fonts/CentraNo2-Medium.woff2') format('woff2'),
+         url('fonts/CentraNo2-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap; 
+}
+
+@font-face {
+    font-family: 'CentraNo2-Light';
+    src: url('fonts/CentraNo2-Light.woff2') format('woff2'),
+         url('fonts/CentraNo2-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap; 
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'CentraNo2-Light', Arial, sans-serif;
+    background-color: #000;
+}
+
+.parallax-container {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url('images/stars.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Centers the text blocks horizontally */
+}
+
+.text-block {
+    background-color: rgba(0, 0, 0, 0);
+    width: 100%; /* Make it full width */
+    box-sizing: border-box; /* Include padding in width calculation */
+    padding: 40px 20px; /* Vertical, horizontal padding */
+    margin: 150px 0; /* Only vertical margins */
+    text-align: center; /* Centers the text inside the blocks */
+}
+
+/* To keep text constrained within a readable width */
+.text-block h2,
+.text-block p {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive text sizing */
+h2 {
+    color: #fff;
+    font-family: 'CentraNo2-Medium', Arial, sans-serif;
+    font-size: clamp(32px, 5vw, 48px); /* Responsive font size */
+    margin-bottom: 20px;
+}
+
+p {
+    color: #fff;
+    font-family: 'CentraNo2-Light', Arial, sans-serif;
+    font-size: clamp(18px, 3vw, 24px); /* Responsive font size */
+    line-height: 1.8;
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 768px) {
+    .text-block {
+        padding: 30px 15px;
+        margin: 80px 0;
+    }
+}
