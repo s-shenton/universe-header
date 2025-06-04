@@ -26,12 +26,19 @@ html, body {
     overflow-x: hidden;
 }
 
+/* Fix viewport height issues on mobile */
+:root {
+    --vh: 1vh;
+}
+
 .parallax-container {
-    height: 100vh; /* 100% of viewport height */
-    height: -webkit-fill-available; /* For iOS Safari */
+    height: 100vh; /* Fallback */
+    height: calc(var(--vh, 1vh) * 100); /* Using CSS variable for mobile */
+    min-height: 100%; /* Extra fallback */
+    max-height: none !important; /* Prevent Rise from limiting height */
     overflow-y: auto;
     overflow-x: hidden;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
     position: relative;
 }
 
@@ -92,13 +99,13 @@ p {
 @media screen and (max-width: 768px) {
     .text-block {
         padding: 30px 15px;
-        margin: 80px 0;
+        margin: 70px 0;
         min-height: 50vh; /* Ensures even small blocks take up good space */
     }
     
-    /* First and last blocks should have enough padding to ensure full height */
+    /* Make sure no content gets clipped */
     .text-block:first-child {
-        margin-top: 20vh;
+        padding-top: 15vh;
     }
     
     .text-block:last-child {

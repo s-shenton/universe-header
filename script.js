@@ -2,35 +2,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const content = document.querySelector('.content');
     let lastScrollTop = 0;
 
-    // Send height to parent
-    function reportHeight() {
-        const height = document.body.scrollHeight;
-        window.parent.postMessage({ type: 'height-update', height: height }, '*');
+    // Fix mobile viewport height issues more aggressively
+    function fixMobileViewport() {
+        // This fixes the iOS/mobile 100vh issue
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+        
+        // Force full height on the container
+        const container = document.querySelector('.parallax-container');
+        container.style.height = `${window.innerHeight}px`;
+        
+        // Report correct height to parent iframe
+        window.parent.postMessage({ 
+            type: 'height-update', 
+            height: Math.max(document.body.scrollHeight, window.innerHeight)
+        }, '*');
     }
     
-    // Report height initially and when window is resized
-    reportHeight();
-    window.addEventListener('resize', reportHeight);
+    // Call viewport fixes on load, resize, and orientation change
+    fixMobileViewport();
+    window.addEventListener('resize', fixMobileViewport);
+    window.addEventListener('orientationchange', function() {
+        // Wait a moment after orientation change before recalculating
+        setTimeout(fixMobileViewport, 100);
+    });
     
     // Make links work properly in Rise
     document.querySelectorAll('a').forEach(link => {
         link.setAttribute('target', '_blank');
     });
-    
-    // Fix for iOS Safari's 100vh issue
-    function adjustMobileHeight() {
-        const vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
-        
-        // For very short screens, ensure content is at least as tall as window
-        if (document.body.scrollHeight < window.innerHeight) {
-            document.querySelector('.parallax-container').style.minHeight = `${window.innerHeight}px`;
-        }
-    }
-    
-    // Call it initially and on resize
-    adjustMobileHeight();
-    window.addEventListener('resize', adjustMobileHeight);
     
     // Check if user is on mobile
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -66,5 +66,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 behavior: 'smooth'
             });
         }
+    });
+    
+    // Additional fix for mobile - recheck height after all content is loaded
+    window.addEventListener('load', function() {
+        fixMobileViewport();
+        // And again after a slight delay to be sure everything is rendered
+        setTimeout(fixMobileViewport, 200);
     });
 });
